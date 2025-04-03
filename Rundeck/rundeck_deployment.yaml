@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rundeck
+  namespace: kuma
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rundeck
+  template:
+    metadata:
+      labels:
+        app: rundeck
+    spec:
+      containers:
+        - name: rundeck
+          image: rundeck/rundeck:4.17.5
+          ports:
+            - containerPort: 4440
